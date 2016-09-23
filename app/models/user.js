@@ -9,7 +9,8 @@ var userSchema = new Schema({
 	password : {type : String, required : true, select : false}
 });
 
-userSchema.pre('save',function(next){	var user = this;
+userSchema.pre('save',function(next){	
+	var user = this;
 	if(!user.isModified('password')) return next();
 	bycrypt.hash(user.password,null,null,function(err,hash){
 		if(err) return next(err);

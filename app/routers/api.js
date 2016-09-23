@@ -10,7 +10,7 @@ var secretKey = config.secretKey;
  		_id : user._id,
  		name : user.name,
  		userName : user.userName,
- 	},secretKey);
+ 	},secretKey,{expiresIn: 1400});
  	return token;
  }
 
@@ -100,7 +100,7 @@ module.exports = function(app,express){
 
 	api.get('/',function(req,res){
 		console.log('Bypassed Middleware');
-		res.json('Bypassed Middleware');
+		res.json({result :'Bypassed Middleware'});
 
 	});
 	return api;
